@@ -1,6 +1,8 @@
+{{#if image_url}}
 <img class='beerImg' src='{{image_url}}' alt='{{name}}' />
+{{/if}}
 <div class='text'>
-  <a href='/{{id}}'>
+  <a href='/beer-{{id}}'>
     <h4 class='name'>{{name}}</h4>
   </a>
   <p class='tagline'>{{tagline}}</p>

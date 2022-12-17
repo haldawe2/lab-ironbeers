@@ -24,8 +24,8 @@ app.get('/', (req, res) => {
 
 app.get('/beers', async (req, res) => {
   try {
-    const beer = await punkAPI.getBeers();
-    res.status(200).render('beers', {beer});
+    const beerFromAPI = await punkAPI.getBeers();
+    res.status(200).render('beers', {beerFromAPI});
   } catch {
     res.send(console.error());
   }
@@ -33,15 +33,15 @@ app.get('/beers', async (req, res) => {
 
 app.get('/random-beer', async (req, res) => {
   try {
-    const beerArr = await punkAPI.getRandom();
-    const beer = await beerArr[0]
+    const beerArrFromAPI = await punkAPI.getRandom();
+    const beer = await beerArrFromAPI[0]
     res.status(200).render('randomBeer', {beer});
   } catch {
     res.send(console.error());
   }
 });
 
-app.get('/:id', async (req, res) => {
+app.get('/beer-:id', async (req, res) => {
   try {
     const beerArr = await punkAPI.getBeer(req.params.id);
     const beer = await beerArr[0]
